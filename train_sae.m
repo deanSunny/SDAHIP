@@ -2,10 +2,11 @@ load 256cate_5.mat
 Xi = ims';
 [N,m] = size(Xi); 
 % train the autoencoder layer表示自己设定的网络结构，比如[192 2]或其他结构，[192 100 2]...
-layer = [192 100 15];
+layer = [192 15];
 layers = length(layer);
 rand('state',0)
 sae = saesetup(layer);
+
 for l = 1:(layers-1) %这是分别设定每一层的激活函数和其他参数
     sae.ae{l}.activation_function       = 'sigm';
     sae.ae{l}.learningRate              = 1;
@@ -38,3 +39,4 @@ end;
 opts.numepochs =   1;
 opts.batchsize = 80;
 nnem = nntrain(nnem, Xi, Xi, opts); %优化这个新的神经网络，然后用优化后的权重，可对新的数据降维了
+

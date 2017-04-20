@@ -2,7 +2,7 @@ function [scores, min_fea_rank] = extract_feature_from_PCA(ims, fea_rank, type)
 %EXTRACT_FEATURE_FROM_PCA Summary of this function goes here
 %   Detailed explanation goes here
     tic;
-    [coeff, score, latent, tsquare] = princomp(zscore(ims), 'econ');
+    [coeff, score, latent, tsquare] = princomp(zscore(ims));
     t_PCA = toc;
     disp(['PCA took ', num2str(t_PCA), ' seconds']);
     min_fea_rank = find(cumsum(latent)./sum(latent) > 0.98, 1, 'first');

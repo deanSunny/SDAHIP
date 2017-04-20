@@ -1,4 +1,4 @@
-function Evaluations(seg, gt)
+function [precision, recall] =  Evaluations(seg, gt)
 %EVALUATIONS Summary of this function goes here
 %   Detailed explanation goes here
 SEG = im2bw(seg, 0.1);  

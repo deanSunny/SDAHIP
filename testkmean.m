@@ -1,4 +1,1 @@
-load('256cate_5.mat')
-tic
-[ind, c] = kmeans(ims, 100);
-toc
+color_result = show_results_color(result, im_dim, n_clusters);

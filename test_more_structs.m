@@ -3,21 +3,25 @@ Xi = ims';
 [N,m] = size(Xi); 
 test_im = {'test_01.jpg', '003580.jpg'};
 base_layer = [256, 200, 150, 128, 100, 64, 32];
-one_layer = nchoosek(base_layer, 1);
-two_layers = nchoosek(base_layer, 2);
-
+% one_layer = nchoosek(base_layer, 1);
+% two_layers = nchoosek(base_layer, 2);
+three_layers = nchoosek(base_layer, 3);
 n_clusters = 15;
 t_SDAHIP.n_clusters = n_clusters;
 t_SDAHIP.test_im = test_im;
 
 layer = [];
 % layer = cell(length(one_layer) + length(two_layers), 1);
-for la = 1 : length(one_layer)
-   layer{end + 1} = [192, one_layer(la), 15]; 
+% for la = 1 : length(one_layer)
+%    layer{end + 1} = [192, one_layer(la), 15]; 
+% end
+% for lb = 1 : length(two_layers)
+%    layer{end + 1} = [192, two_layers(lb, :), 15]; 
+% end
+for lc = 1 : length(three_layers)
+   layer{end + 1} = [192, three_layers(lc, :), 15];
 end
-for lb = 1 : length(two_layers)
-   layer{end + 1} = [192, two_layers(lb, :), 15]; 
-end
+
 num_layer = length(layer);
 
 rand('state',0)
